@@ -11,6 +11,10 @@ canvas_default = CTkCanvas(frame,bg = "Grey",height = "1920",width = 500)
 
 #img = PhotoImage(file=".\owl.jpg")
 #ctk.CTkButton(root, image = img).pack(side = LEFT)
+  
+frame = CTkFrame(master=root, width=200, height=200)
+canvas_default = CTkCanvas(frame,bg = "Grey",height = "200",width = 200)
+#Added Shubhanshi Branchs
 
 canvas_default.pack()
 label = CTkLabel(master=root,text="Ayushi",fg_color='black', width=120,height=25).grid(row=0,column=1)
