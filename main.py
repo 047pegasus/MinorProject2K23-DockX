@@ -11,10 +11,6 @@ canvas_default = CTkCanvas(frame,bg = "Grey",height = "1920",width = 300)
 
 #img = PhotoImage(file=".\owl.jpg")
 #ctk.CTkButton(root, image = img).pack(side = LEFT)
-  
-frame = CTkFrame(master=root, width=200, height=200)
-canvas_default = CTkCanvas(frame,bg = "Grey",height = "200",width = 200)
-#Added Shubhanshi Branchs
 
 canvas_default.grid(row=0,column=0,padx=20)
 button = CTkButton(master=root,text="Logout",fg_color='midnight blue', width=120,height=25,corner_radius=20).grid(row=0,column=0,padx=20,pady=(0,200))
