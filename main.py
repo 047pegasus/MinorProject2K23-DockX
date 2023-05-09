@@ -9,12 +9,12 @@ root.geometry("1920x1080")
 frame1 = CTkFrame(master=root, width=1500, height=1000)
 canvas_default = CTkCanvas(frame1,bg = "Black",height = "1045",width = 1610)
 canvas_default.grid(row=0,column=0)
-frame1.grid(row = 0, column = 0, padx = (0,800),pady=(0,50))         #240
+frame1.grid(row = 0, column = 0, padx = (0,800),pady=(0,50))         
 
 frame2 = CTkFrame(master=root, width=400, height=530)
 can_def1 = CTkCanvas(frame2,bg = "Teal",height = "530",width = 400)
 can_def1.grid(row=0,column=0)
-frame2.grid(row=0,column = 0,padx=400,pady=(50,410),sticky="nsw")        #400
+frame2.grid(row=0,column = 0,padx=400,pady=(50,410),sticky="nsw")        
 
 frame3 = CTkFrame(master=root, width=400, height=530)
 can_def2 = CTkCanvas(frame3,bg = "Teal",height = "530",width = 400)
