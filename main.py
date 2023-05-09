@@ -13,9 +13,30 @@ canvas_default = CTkCanvas(frame,bg = "Grey",height = "1920",width = 300)
 img = Image.open("owl.jpg")
 picimg=img.resize((100,100))
 tkimg = ImageTk.PhotoImage(picimg)
-CTkButton(canvas_default, image = tkimg).grid(row=0,column=0)
-                                                                                                                  
+CTkButton(canvas_default, image = tkimg).grid(row=0,column=0)                                                                                                                  
 label = CTkLabel(master=canvas_default,text="Ayushi",fg_color='black', width=120,height=25).grid(row=0,column=1)
+button = CTkButton(master=root,text="Logout",fg_color='midnight blue', width=120,height=25,corner_radius=20).grid(row=0,column=0,padx=20,pady=(0,200))
+canvas_default.grid(row=0,column=0,padx=20)
+                                                                                                                  
+frame1 = CTkFrame(master=root, width=1500, height=1000)
+canvas_default = CTkCanvas(frame1,bg = "Black",height = "1045",width = 1610)
+canvas_default.grid(row=0,column=0)
+frame1.grid(row = 0, column = 0, padx = (0,800),pady=(0,50))         
+
+frame2 = CTkFrame(master=root, width=400, height=530)
+can_def1 = CTkCanvas(frame2,bg = "Teal",height = "530",width = 400)
+can_def1.grid(row=0,column=0)
+frame2.grid(row=0,column = 0,padx=400,pady=(50,410),sticky="nsw")        
+
+frame3 = CTkFrame(master=root, width=400, height=530)
+can_def2 = CTkCanvas(frame3,bg = "Teal",height = "530",width = 400)
+can_def2.grid(row=0,column=0)
+frame3.grid(row=0,column = 0,padx=800,pady=(50,410),sticky="nsw")
+
+frame4 = CTkFrame(master=root, width=400, height=530)
+can_def3 = CTkCanvas(frame4,bg = "Teal",height = "530",width = 400)
+can_def3.grid(row=0,column=0)
+frame4.grid(row=0,column = 0,padx=1200,pady=(50,410),sticky="nsw")
 
 button = CTkButton(master=root,text="Logout",fg_color='midnight blue', width=120,height=25,corner_radius=20).grid(row=0,column=0,padx=20,pady=(0,200))
 
