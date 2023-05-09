@@ -13,10 +13,12 @@ canvas_default = CTkCanvas(frame,bg = "Grey",height = "1920",width = 300)
 #ctk.CTkButton(root, image = img).pack(side = LEFT)
 
 canvas_default.grid(row=0,column=0,padx=20)
-button = CTkButton(master=root,text="Logout",fg_color='midnight blue', width=120,height=25,corner_radius=20).grid(row=0,column=0,padx=20,pady=(0,200))
+button = CTkButton(master=root,text="Logout",fg_color='midnight blue', width=120,height=25,corner_radius=20).grid(row=0,column=0,padx=20,pady=(0,200)
 
+canvas_default = CTkCanvas(root,bg = "Green",height = 1080,width = 300)
+                                                                                                                  
+label = CTkLabel(master=canvas_default,text="Ayushi",fg_color='black', width=120,height=25).grid(row=0,column=1)
 
-frame.grid(row=0,column=0,padx=20)
 root.mainloop()
 
 
