@@ -1,44 +1,122 @@
-#Write code to define a side menu using tkinter for an application. The side menu should have the following options:
-#1. Home
-#2. About
-#3. Contact
-#4. Exit
-
-#This side menu must have a height equal to the application
-
-from tkinter import *
+from tkinter import LabelFrame, PhotoImage,messagebox, ttk
 from customtkinter import *
+from PIL import Image, ImageTk
 
 set_appearance_mode("dark")  # Modes: system (default), light, dark
 set_default_color_theme("dark-blue")  # Themes: blue (default), dark-blue, green
 
+def fun_yes():
+    messagebox.showinfo('Return','All containers are closed.')
+    y=messagebox.askyesno("Confirmation","Do you want to Logout?")
+    if y==True:
+        root.destroy()
+    else:
+        messagebox.showinfo('Return','You will now return to the main screen.')
+
+def fun_no():
+    y=messagebox.askyesno("Confirmation","Do you want to Logout?")
+    if y==True:
+        root.destroy()
+    else:
+        messagebox.showinfo('Return','You will now return to the main screen.')
+
+def fun():
+    x= messagebox.askyesno("Confirmation","Do you want to close all containers?")
+    if x==True:
+        fun_yes()
+    else:
+        fun_no()
+
+def _create_circle(self, x, y, r, **kwargs):
+    return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
+CTkCanvas.create_circle = _create_circle
+
+def _create_circle_arc(self, x, y, r, **kwargs):
+    if "start" in kwargs and "end" in kwargs:
+        kwargs["extent"] = kwargs["end"] - kwargs["start"]
+        del kwargs["end"]
+    return self.create_arc(x-r, y-r, x+r, y+r, **kwargs)
+CTkCanvas.create_circle_arc = _create_circle_arc
+
+
 root=CTk()
-root.geometry("1920x1080")
-root.title("Side Menu")
+screen_width =(int)(root.winfo_screenwidth())
+screen_height =(int)(root.winfo_screenheight())
+root.geometry("%d,%d" % (screen_width,screen_height))
 
-def home():
-    print("Home")
+#sidePaneMenu
+framemenu = CTkFrame(master=root,height=screen_height,width=screen_width/4,fg_color="gray19")
 
-def about():
-    print("About")
+#img = CTkImage(light_image=Image.open("owl.jpg"),dark_image=Image.open("owl.jpg"),size=(150,150))
+#imglabel= CTkLabel(framemenu, text='', image = img, corner_radius=50).pack(side=TOP,padx=(10,10),pady=(20,10))
 
-def contact():
-    print("Contact")
+label = CTkLabel(master=framemenu,text="047pegasus",font=("Roboto", 20), fg_color='gray19',text_color='White').pack(side=TOP,padx=0,pady=(30,10))
 
-def exit():
-    print("Exit")
+homelabel = CTkButton(master=framemenu,text="Home",font=("Roboto" ,20), cursor='arrow', fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(150,10))
 
-canvas_default = CTkCanvas(root,bg = "Green",height = 1080,width = 300)
+containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
 
-label = CTkLabel(master=canvas_default,text="Home",fg_color='black', width=120,height=25).grid(row=0,column=1)
+cpustatslabel = CTkButton(master=framemenu,text="CPU Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
 
-label = CTkLabel(master=canvas_default,text="About",fg_color='black', width=120,height=25).grid(row=1,column=1)
 
-label = CTkLabel(master=canvas_default,text="Contact",fg_color='black', width=120,height=25).grid(row=2,column=1)
+button = CTkButton(master=framemenu,text="Logout",font=("Roboto", 20), fg_color='midnight blue', width=120,height=30,corner_radius=10,command=fun).pack(side=BOTTOM,padx=0,pady=(200,100))
+framemenu.pack(side=LEFT,fill=BOTH,padx=0,pady=0)
 
-label = CTkLabel(master=canvas_default,text="Exit",fg_color='black', width=120,height=25).grid(row=3,column=1)
+#mainWindowFrame                                                                                                                                                                                                                                    
+frame_main = CTkFrame(master=root, width=1000, height=800, fg_color="Black")
 
-canvas_default.grid(row=0,column=0,padx=20)
+frame_Top = CTkFrame(master= frame_main, width=1000, height=500, fg_color="gray10")
+can_def1 = CTkCanvas(frame_Top, bg = "MediumPurple4",height = "530",width = 400)
+
+can_def1.create_circle(200, 200, 100, fill="gold2", outline="", width=4)
+can_def1.create_circle_arc(200, 200, 100, fill="grey", outline="", start=45, end=140)
+can_def1.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
+#frame_Bottom_can1 = CTkFrame(master=can_def1, width=400, height=100, fg_color="gray10").pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
+CTkLabel(can_def1,text="Container CPU \nUtilization",font=("Roboto", 20), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,expand=True,padx=(100,90),pady=(300,50))
+can_def1.pack(side=LEFT, expand=True, padx=(10,5),pady=10)
+
+can_def2 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
+
+can_def2.create_circle(200, 200, 100, fill="spring green", outline="", width=4)
+can_def2.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=220)
+can_def2.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
+CTkLabel(can_def2,text="Container Memory \nUtilization (NVRAM)",font=("Roboto", 20), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,expand=True,padx=(90,50),pady=(300,50))
+
+can_def2.pack(side=LEFT, expand=True, padx=(5,5),pady=10)
+
+can_def3 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
+
+can_def3.create_circle(200, 200, 100, fill="coral", outline="", width=4)
+can_def3.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=300)
+can_def3.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
+CTkLabel(can_def3,text="Net-CPU \nUtilization",font=("Roboto", 20), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,expand=True,padx=(100,130),pady=(300,50))
+can_def3.pack(side=LEFT, expand = True,padx=(5,10), pady=10)
+
+frame_Top.pack(side=TOP,fill=BOTH,expand=True,padx=0,pady=0)
+
+frame_Bottom = CTkFrame(master=frame_main, width=1000, height=400, fg_color="gray10")
+#style = ttk.Style()
+#style.configure("Treeview",fieldbackground="black",foreground = "white")
+table=ttk.Treeview(frame_Bottom, columns= ('ID', 'Name', 'Status'),show= 'headings')
+
+table.heading('ID', text='Container ID')
+table.heading('Name', text='Container Name')
+table.heading('Status', text='Container Status')
+
+table.pack(fill=BOTH,expand=False,padx=100,pady=(10,0))
+
+frame_Bottombar = CTkFrame(master=frame_Bottom, width=1000, height=0.5, fg_color="gray19")
+frame_Bottombar.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=(180,0))
+
+CPUlabel = CTkLabel(master=frame_Bottombar,text="CPU: 65.01%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=40,pady=0)
+Memlabel = CTkLabel(master=frame_Bottombar,text="Memory: 61%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=10,pady=0)
+Disklabel = CTkLabel(master=frame_Bottombar,text="Disk: 35%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=10,pady=0)
+Conlabel = CTkLabel(master=frame_Bottombar,text="Containers: Online ✅",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=RIGHT,padx=(0,40),pady=0)
+Servlabel = CTkLabel(master=frame_Bottombar,text="Service: Running ⚡",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=RIGHT,padx=20,pady=0)
+
+frame_Bottom.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
+frame_main.pack(side=RIGHT,padx=0,expand=True,fill=BOTH)
+
+
 
 root.mainloop()
-
