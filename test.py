@@ -72,7 +72,7 @@ can_def1.create_circle(200, 200, 100, fill="gold2", outline="", width=4)
 can_def1.create_circle_arc(200, 200, 100, fill="grey", outline="", start=45, end=140)
 can_def1.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
 #frame_Bottom_can1 = CTkFrame(master=can_def1, width=400, height=100, fg_color="gray10").pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
-CTkLabel(can_def1,text="Container CPU Utilization",font=("Roboto", 20), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,expand=True)
+CTkLabel(can_def1,text="Container CPU Utilization",font=("Roboto", 20), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,expand=True,padx=(30,150),pady=(500,0))
 can_def1.pack(side=LEFT, expand=True, padx=(10,5),pady=10)
 
 can_def2 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
