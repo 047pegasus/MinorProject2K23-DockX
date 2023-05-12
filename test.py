@@ -72,24 +72,25 @@ can_def1.create_circle(200, 200, 100, fill="gold2", outline="", width=4)
 can_def1.create_circle_arc(200, 200, 100, fill="grey", outline="", start=45, end=140)
 can_def1.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
 #frame_Bottom_can1 = CTkFrame(master=can_def1, width=400, height=100, fg_color="gray10").pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
-CTkLabel(can_def1,text="Container CPU Utilization",font=("Roboto", 20), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,expand=True)
-can_def1.pack(side=LEFT, expand=True, padx=(10,5),pady=10)
+CTkLabel(can_def1,text="75%",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(40,40),pady=(0,0))
+CTkLabel(can_def1,text="Container CPU Utilization",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(40,40),pady=(370,100))
+can_def1.pack(side=LEFT,expand=True, padx=(20,15),pady=10)
 
 can_def2 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
 
 can_def2.create_circle(200, 200, 100, fill="spring green", outline="", width=4)
 can_def2.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=220)
 can_def2.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
-
-can_def2.pack(side=LEFT, expand=True, padx=(5,5),pady=10)
+CTkLabel(can_def2,text="Container Memory Utilization \n (NVRAM)",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH, expand=True,padx=(20,20),pady=(335,100))
+can_def2.pack(side=LEFT, expand=True, padx=(5,15),pady=10)
 
 can_def3 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
 
 can_def3.create_circle(200, 200, 100, fill="coral", outline="", width=4)
 can_def3.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=300)
 can_def3.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
-
-can_def3.pack(side=LEFT, expand = True,padx=(5,10), pady=10)
+CTkLabel(can_def3,text="Net CPU Utilization",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(80,80),pady=(370,100))
+can_def3.pack(side=LEFT,expand = True,padx=(5,20), pady=10)
 
 frame_Top.pack(side=TOP,fill=BOTH,expand=True,padx=0,pady=0)
 
@@ -101,14 +102,14 @@ table.heading('Status', text='Container Status')
 
 table.pack(fill=BOTH,expand=False,padx=100,pady=(10,0))
 
-frame_Bottombar = CTkFrame(master=frame_Bottom, width=1000, height=0.5, fg_color="gray19")
-frame_Bottombar.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=(180,0))
+frame_Bottombar = CTkFrame(master=frame_Bottom, width=1000, height=0.5, fg_color="gray19", corner_radius=0)
 
 CPUlabel = CTkLabel(master=frame_Bottombar,text="CPU: 65.01%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=40,pady=0)
 Memlabel = CTkLabel(master=frame_Bottombar,text="Memory: 61%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=10,pady=0)
 Disklabel = CTkLabel(master=frame_Bottombar,text="Disk: 35%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=10,pady=0)
 Conlabel = CTkLabel(master=frame_Bottombar,text="Containers: Online ✅",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=RIGHT,padx=(0,40),pady=0)
 Servlabel = CTkLabel(master=frame_Bottombar,text="Service: Running ⚡",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=RIGHT,padx=20,pady=0)
+frame_Bottombar.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=(180,0))
 
 frame_Bottom.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
 frame_main.pack(side=RIGHT,padx=0,expand=True,fill=BOTH)
