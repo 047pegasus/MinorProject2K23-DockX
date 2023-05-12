@@ -58,8 +58,10 @@ containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20
 
 cpustatslabel = CTkButton(master=framemenu,text="CPU Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
 
+run_img = CTkImage(light_image=Image.open("docker_greenjpg.jpg"),dark_image=Image.open("docker_greenjpg.jpg"),size=(200,50))
+running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(100,0))
+button = CTkButton(framemenu,text="Logout",font=("Roboto", 20), fg_color='midnight blue', width=140,height=40,corner_radius=10,command=fun).pack(side=BOTTOM,padx=0,pady=(100,20))
 
-button = CTkButton(master=framemenu,text="Logout",font=("Roboto", 20), fg_color='midnight blue', width=120,height=30,corner_radius=10,command=fun).pack(side=BOTTOM,padx=0,pady=(200,100))
 framemenu.pack(side=LEFT,fill=BOTH,padx=0,pady=0)
 
 #mainWindowFrame                                                                                                                                                                                                                                    
