@@ -1,4 +1,4 @@
-from tkinter import PhotoImage,messagebox
+from tkinter import LabelFrame, PhotoImage,messagebox, ttk
 from customtkinter import *
 from PIL import Image, ImageTk
 
@@ -38,6 +38,7 @@ def _create_circle_arc(self, x, y, r, **kwargs):
     return self.create_arc(x-r, y-r, x+r, y+r, **kwargs)
 CTkCanvas.create_circle_arc = _create_circle_arc
 
+
 root=CTk()
 screen_width =(int)(root.winfo_screenwidth())
 screen_height =(int)(root.winfo_screenheight())
@@ -57,37 +58,64 @@ containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20
 
 cpustatslabel = CTkButton(master=framemenu,text="CPU Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
 
+run_img = CTkImage(light_image=Image.open("docker_greenjpg.jpg"),dark_image=Image.open("docker_greenjpg.jpg"),size=(200,50))
+running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(100,0))
+button = CTkButton(framemenu,text="Logout",font=("Roboto", 20), fg_color='midnight blue', width=140,height=40,corner_radius=10,command=fun).pack(side=BOTTOM,padx=0,pady=(100,20))
 
-button = CTkButton(master=framemenu,text="Logout",font=("Roboto", 20), fg_color='midnight blue', width=120,height=30,corner_radius=10,command=fun).pack(side=BOTTOM,padx=0,pady=(200,100))
 framemenu.pack(side=LEFT,fill=BOTH,padx=0,pady=0)
 
 #mainWindowFrame                                                                                                                                                                                                                                    
 frame_main = CTkFrame(master=root, width=1000, height=800, fg_color="Black")
 
-can_def1 = CTkCanvas(frame_main,bg = "MediumPurple4",height = "530",width = 400)
+frame_Top = CTkFrame(master= frame_main, width=1000, height=500, fg_color="gray10")
+
+can_def1 = CTkCanvas(frame_Top, bg = "MediumPurple4",height = "530",width = 400)
 
 can_def1.create_circle(200, 200, 100, fill="gold2", outline="", width=4)
 can_def1.create_circle_arc(200, 200, 100, fill="grey", outline="", start=45, end=140)
 can_def1.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
+#frame_Bottom_can1 = CTkFrame(master=can_def1, width=400, height=100, fg_color="gray10").pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
+CTkLabel(can_def1,text="Container CPU Utilization",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(40,40),pady=(150,100))
+CTkLabel(can_def1,text="75%",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,padx=(50,40),pady=(185,0))
+can_def1.pack(side=LEFT,expand=True, padx=(20,15),pady=10)
 
-can_def1.pack(side=RIGHT, expand=True, padx=(20,0))
-
-can_def2 = CTkCanvas(frame_main,bg = "MediumPurple4",height = "530",width = 400)
+can_def2 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
 
 can_def2.create_circle(200, 200, 100, fill="spring green", outline="", width=4)
 can_def2.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=220)
 can_def2.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
+CTkLabel(can_def2,text="Container Memory Utilization \n (NVRAM)",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH, expand=True,padx=(20,20),pady=(115,100))
+CTkLabel(can_def2,text="65%",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,padx=(45,40),pady=(185,0))
+can_def2.pack(side=LEFT, expand=True, padx=(5,15),pady=10)
 
-can_def2.pack(side=RIGHT, expand=True, padx=(20,0))
-
-can_def3 = CTkCanvas(frame_main,bg = "MediumPurple4",height = "530",width = 400)
+can_def3 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
 
 can_def3.create_circle(200, 200, 100, fill="coral", outline="", width=4)
 can_def3.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=300)
 can_def3.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
+CTkLabel(can_def3,text="Net CPU Utilization",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(80,80),pady=(150,100))
+CTkLabel(can_def3,text="70%",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,padx=(50,40),pady=(185,0))
+can_def3.pack(side=LEFT,expand = True,padx=(5,20), pady=10)
 
-can_def3.pack(side=RIGHT, expand = True,padx=(20,20))
+frame_Top.pack(side=TOP,fill=BOTH,expand=True,padx=0,pady=0)
 
+frame_Bottom = CTkFrame(master=frame_main, width=1000, height=400, fg_color="gray10")
+table=ttk.Treeview(frame_Bottom, columns= ('ID', 'Name', 'Status'),show= 'headings')
+table.heading('ID', text='Container ID')
+table.heading('Name', text='Container Name')
+table.heading('Status', text='Container Status')
+
+table.pack(fill=BOTH,expand=False,padx=100,pady=(10,0))
+
+frame_Bottombar = CTkFrame(master=frame_Bottom, width=1000, height=0.5, fg_color="gray19", corner_radius=0)
+CPUlabel = CTkLabel(master=frame_Bottombar,text="CPU: 65.01%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=40,pady=0)
+Memlabel = CTkLabel(master=frame_Bottombar,text="Memory: 61%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=10,pady=0)
+Disklabel = CTkLabel(master=frame_Bottombar,text="Disk: 35%",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=10,pady=0)
+Conlabel = CTkLabel(master=frame_Bottombar,text="Containers: Online ✅",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=RIGHT,padx=(0,40),pady=0)
+Servlabel = CTkLabel(master=frame_Bottombar,text="Service: Running ⚡",font=("Roboto" ,15), fg_color='gray19',text_color='White').pack(side=RIGHT,padx=20,pady=0)
+frame_Bottombar.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=(200,0))
+
+frame_Bottom.pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
 frame_main.pack(side=RIGHT,padx=0,expand=True,fill=BOTH)
 
 root.mainloop()
