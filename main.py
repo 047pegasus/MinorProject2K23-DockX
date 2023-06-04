@@ -40,6 +40,7 @@ CTkCanvas.create_circle_arc = _create_circle_arc
 
 
 root=CTk()
+root.title("DOCK-X")
 screen_width =(int)(root.winfo_screenwidth())
 screen_height =(int)(root.winfo_screenheight())
 root.geometry("%d,%d" % (screen_width,screen_height))
@@ -47,7 +48,7 @@ root.geometry("%d,%d" % (screen_width,screen_height))
 #sidePaneMenu
 framemenu = CTkFrame(master=root,height=screen_height,width=screen_width/4,fg_color="gray19")
 
-img = CTkImage(light_image=Image.open("owl.jpg"),dark_image=Image.open("owl.jpg"),size=(150,150))
+img = CTkImage(light_image=Image.open("047pegasus.jpg"),dark_image=Image.open("047pegasus.jpg"),size=(150,150))
 imglabel= CTkLabel(framemenu, text='', image = img, corner_radius=50).pack(side=TOP,padx=(10,10),pady=(20,10))
 
 label = CTkLabel(master=framemenu,text="047pegasus",font=("Roboto", 20), fg_color='gray19',text_color='White').pack(side=TOP,padx=0,pady=(30,10))
@@ -56,10 +57,10 @@ homelabel = CTkButton(master=framemenu,text="Home",font=("Roboto" ,20), cursor='
 
 containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
 
-cpustatslabel = CTkButton(master=framemenu,text="CPU Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
+cpustatslabel = CTkButton(master=framemenu,text="Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
 
 run_img = CTkImage(light_image=Image.open("docker_greenjpg.jpg"),dark_image=Image.open("docker_greenjpg.jpg"),size=(200,50))
-running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(100,0))
+running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(51,0))
 button = CTkButton(framemenu,text="Logout",font=("Roboto", 20), fg_color='midnight blue', width=140,height=40,corner_radius=10,command=fun).pack(side=BOTTOM,padx=0,pady=(100,20))
 
 framemenu.pack(side=LEFT,fill=BOTH,padx=0,pady=0)
@@ -100,10 +101,22 @@ can_def3.pack(side=LEFT,expand = True,padx=(5,20), pady=10)
 frame_Top.pack(side=TOP,fill=BOTH,expand=True,padx=0,pady=0)
 
 frame_Bottom = CTkFrame(master=frame_main, width=1000, height=400, fg_color="gray10")
+style = ttk.Style(root)
+style.theme_use("clam")
+style.configure("Treeview", background="black", fieldbackground="black", foreground="white")
+
 table=ttk.Treeview(frame_Bottom, columns= ('ID', 'Name', 'Status'),show= 'headings')
 table.heading('ID', text='Container ID')
 table.heading('Name', text='Container Name')
 table.heading('Status', text='Container Status')
+
+for i in range(3):
+    ID=('2')
+    Name=('Redis Enterprise')
+    Status=('Running')
+    data = (ID,Name , Status)
+    table.insert(parent='',index = 0 , values= data)
+
 
 table.pack(fill=BOTH,expand=False,padx=100,pady=(10,0))
 
