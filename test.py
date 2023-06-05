@@ -48,16 +48,22 @@ root.geometry("%d,%d" % (screen_width,screen_height))
 #sidePaneMenu
 framemenu = CTkFrame(master=root,height=screen_height,width=screen_width/4,fg_color="gray19")
 
-img = CTkImage(light_image=Image.open("owl.jpg"),dark_image=Image.open("owl.jpg"),size=(150,150))
+img = CTkImage(light_image=Image.open("047pegasus.jpg"),dark_image=Image.open("047pegasus.jpg"),size=(150,150))
 imglabel= CTkLabel(framemenu, text='', image = img, corner_radius=50).pack(side=TOP,padx=(10,10),pady=(20,10))
 
-label = CTkLabel(master=framemenu,text="047pegasus",font=("Roboto", 20), fg_color='gray19',text_color='White').pack(side=TOP,padx=0,pady=(30,10))
+label = CTkLabel(master=framemenu,text="047pegasus",font=("Roboto", 20), fg_color='gray19',text_color='White').pack(side=TOP,padx=0,pady=(25,25))
 
-homelabel = CTkButton(master=framemenu,text="Home",font=("Roboto" ,20), cursor='arrow', fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(150,10))
+download_home=CTkImage(light_image=Image.open("home.png"),dark_image=Image.open("home.png"),size=(30,30))
 
-containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
+homelabel = CTkButton(master=framemenu,text="Home",font=("Roboto" ,20), cursor='arrow', fg_color='gray19',hover_color='gray11',text_color='White',image=download_home).pack(side=TOP,padx=0,pady=(150,10))
 
-cpustatslabel = CTkButton(master=framemenu,text="CPU Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White').pack(side=TOP,padx=0,pady=(20,10))
+download_cont=CTkImage(light_image=Image.open("box.png"),dark_image=Image.open("box.png"),size=(30,30))
+
+containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White',image=download_cont).pack(side=TOP,padx=0,pady=(20,10))
+
+download_stat=CTkImage(light_image=Image.open("statistics.png"),dark_image=Image.open("statistics.png"),size=(25,25))
+
+cpustatslabel = CTkButton(master=framemenu,text="Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White',image=download_stat).pack(side=TOP,padx=0,pady=(20,10))
 
 run_img = CTkImage(light_image=Image.open("docker_greenjpg.jpg"),dark_image=Image.open("docker_greenjpg.jpg"),size=(200,50))
 running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(51,0))
@@ -85,7 +91,7 @@ can_def2 = CTkCanvas(frame_Top,bg = "MediumPurple4",height = "530",width = 400)
 can_def2.create_circle(200, 200, 100, fill="spring green", outline="", width=4)
 can_def2.create_circle_arc(200, 200, 100, fill="grey", outline="", start=165, end=220)
 can_def2.create_circle(200, 200, 70, fill="MediumPurple4", outline="", width=4)
-CTkLabel(can_def2,text="Container Memory Utilization \n (NVRAM)",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH, expand=True,padx=(20,20),pady=(115,100))
+CTkLabel(can_def2,text="Container Memory Utilization \n (NVRAM)",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,fill=BOTH, expand=True,padx=(20,20),pady=(117,100))
 CTkLabel(can_def2,text="65%",font=("Roboto Bold", 25), fg_color='MediumPurple4',text_color='White').pack(side=BOTTOM,padx=(45,40),pady=(185,0))
 can_def2.pack(side=LEFT, expand=True, padx=(5,15),pady=10)
 
