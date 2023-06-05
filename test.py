@@ -55,15 +55,15 @@ label = CTkLabel(master=framemenu,text="047pegasus",font=("Roboto", 20), fg_colo
 
 download_home=CTkImage(light_image=Image.open("home.png"),dark_image=Image.open("home.png"),size=(30,30))
 
-homelabel = CTkButton(master=framemenu,text="Home",font=("Roboto" ,20), cursor='arrow', fg_color='gray19',hover_color='gray11',text_color='White',image=download_home).pack(side=TOP,padx=0,pady=(150,10))
+homelabel = CTkButton(master=framemenu,text="Home",font=("Roboto" ,20), cursor='arrow', fg_color='gray19',hover_color='gray11',text_color='White',image=download_home).pack(side=TOP,padx=(0,20),pady=(110,10))
 
-download_cont=CTkImage(light_image=Image.open("box.png"),dark_image=Image.open("box.png"),size=(30,30))
-
-containerlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White',image=download_cont).pack(side=TOP,padx=0,pady=(20,10))
-
-download_stat=CTkImage(light_image=Image.open("statistics.png"),dark_image=Image.open("statistics.png"),size=(25,25))
+download_stat=CTkImage(light_image=Image.open("statistics.png"),dark_image=Image.open("statistics.png"),size=(30,30))
 
 cpustatslabel = CTkButton(master=framemenu,text="Statistics",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White',image=download_stat).pack(side=TOP,padx=0,pady=(20,10))
+
+download_cont=CTkImage(light_image=Image.open("box.png"),dark_image=Image.open("box.png"),size=(25,25))
+
+contlabel = CTkButton(master=framemenu,text="Containers",font=("Roboto", 20), cursor='arrow',fg_color='gray19',hover_color='gray11',text_color='White',image=download_cont).pack(side=TOP,padx=0,pady=(20,10))
 
 run_img = CTkImage(light_image=Image.open("docker_greenjpg.jpg"),dark_image=Image.open("docker_greenjpg.jpg"),size=(200,50))
 running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(51,0))
