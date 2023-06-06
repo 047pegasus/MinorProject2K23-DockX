@@ -24,9 +24,20 @@ def top():
 
 root = tk.Tk()
 root.title("Splash screen")
-root.eval('tk::PlaceWindow . center')
+#root.eval('tk::PlaceWindow . center')
 root.overrideredirect(True)
 
+width = 700 # Width 
+height = 500 # Height
+ 
+screen_width = root.winfo_screenwidth()  # Width of the screen
+screen_height = root.winfo_screenheight() # Height of the screen
+ 
+# Calculate Starting X and Y coordinates for Window
+x = (screen_width/2) - (width/2)
+y = (screen_height/2) - (height/2)
+ 
+root.geometry('%dx%d+%d+%d' % (width, height, x, y))
 
 img = CTkImage(light_image=Image.open("splash.png"),dark_image=Image.open("splash.png"),size=(500,300))
 imglabel= CTkLabel(root, text='', image = img, corner_radius=50, bg_color='#101828').pack(side=TOP,padx=0,pady=0)
