@@ -3,17 +3,16 @@ from tkinter import ttk
 from customtkinter import *
 from PIL import Image, ImageTk
 
-
 i = 0
 
 def load():
     global i
-    if i <= 10:
-        txt = 'Loading...' + str(10 * i) + '%'
+    if i <= 5:
+        txt = 'Loading...' + str(20 * i) + '%'
         progress_label.configure(text=txt)
-        progress['value'] = 10 * i
+        progress['value'] = 20 * i
         i += 1
-        progress_label.after(600, load)
+        progress_label.after(200, load)
     else:
         root.destroy()  
         top()  
@@ -26,7 +25,7 @@ def top():
 root = tk.Tk()
 root.title("Splash screen")
 root.eval('tk::PlaceWindow . center')
-
+root.overrideredirect(True)
 
 
 img = CTkImage(light_image=Image.open("splash.png"),dark_image=Image.open("splash.png"),size=(500,300))
