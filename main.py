@@ -42,7 +42,7 @@ CTkCanvas.create_circle_arc = _create_circle_arc
 root=CTk()
 root.title("DOCK-X")
 
-root.attributes('-fullscreen', True)
+#root.attributes('-fullscreen', True)
 screen_width =(int)(root.winfo_screenwidth())
 screen_height =(int)(root.winfo_screenheight())
 root.geometry("%d,%d" % (screen_width,screen_height))
