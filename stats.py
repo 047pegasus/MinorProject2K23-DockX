@@ -32,8 +32,7 @@ def fun():
 
 root = CTk()
 root.title("DOCK-X")
-
-# root.attributes('-fullscreen', True)
+root.attributes('-fullscreen', True)
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 root.geometry(f"{screen_width},{screen_height}")
@@ -81,14 +80,13 @@ Memlabel = CTkLabel(master=frame_Bottombar, text="Memory: 61%", font=("Montserra
 Disklabel = CTkLabel(master=frame_Bottombar, text="Disk: 35%", font=("Montserrat", 15), fg_color='gray19', text_color='White').pack(side=LEFT, padx=10, pady=0)
 Conlabel = CTkLabel(master=frame_Bottombar, text="Containers: Online ✅", font=("Montserrat", 15), fg_color='gray19', text_color='White').pack(side=RIGHT, padx=(0, 40), pady=0)
 Servlabel = CTkLabel(master=frame_Bottombar, text="Service: Running ⚡", font=("Montserrat", 15), fg_color='gray19', text_color='White').pack(side=RIGHT, padx=20, pady=0)
-frame_Bottombar.pack(side=BOTTOM, fill=BOTH, expand=True, padx=0, pady=0)
+frame_Bottombar.pack(side=BOTTOM, fill=BOTH, expand=True, padx=0, pady=(100,0))
 
 frame_BottomLeft = CTkFrame(master=frame_Bottom, width=800, height=740, fg_color="gray10")
 memory = CTkCanvas(frame_BottomLeft, bg="#1F1E2E", height="400", width=650,highlightthickness=0)
 memory.pack(side=LEFT, expand=False, padx=20, pady=(10,300))
 network = CTkCanvas(frame_BottomLeft, bg="#1F1E2E", height="400", width=500,highlightthickness=0)
 network.pack(side=LEFT, expand=FALSE, padx=0, pady=(10,300))
-
 
 frame_BottomRight = CTkFrame(master=frame_Bottom, width=475, height=740, fg_color="gray10")
 style = ttk.Style(root)
@@ -99,9 +97,9 @@ style.configure("Treeview.Heading", background="black", fieldbackground="black",
 table=ttk.Treeview(frame_BottomRight, columns= ('ID', 'Name'),show= 'headings')
 table.configure(height=10)
 table.column("# 1", anchor='center')
-table.heading('ID', text='C_ID')
+table.heading('ID', text='Container ID')
 table.column("# 2", anchor='center')
-table.heading('Name', text='C_Name')
+table.heading('Name', text='Container Name')
 
 for i in range(2):
     ID=('')
