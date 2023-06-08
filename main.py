@@ -27,6 +27,14 @@ def fun():
     else:
         fun_no()
 
+def stats():
+    root.destroy()
+    import stats.py
+
+def cont():
+    root.destroy()
+    import cont.py
+
 def _create_circle(self, x, y, r, **kwargs):
     return self.create_oval(x-r, y-r, x+r, y+r, **kwargs)
 CTkCanvas.create_circle = _create_circle
@@ -48,24 +56,24 @@ screen_height =(int)(root.winfo_screenheight())
 root.geometry("%d,%d" % (screen_width,screen_height))
 
 #sidePaneMenu
-framemenu = CTkFrame(master=root,height=screen_height,width=screen_width/4,fg_color="#3E3E3E")
+framemenu = CTkFrame(master=root,height=screen_height,width=screen_width/4,fg_color="#313131")
 
-img = CTkImage(light_image=Image.open('047pegasus.jpg'),dark_image=Image.open('047pegasus.jpg'),size=(150,150))
+img = CTkImage(light_image=Image.open('round.png'),dark_image=Image.open('round.png'),size=(150,150))
 imglabel= CTkLabel(framemenu, text='', image = img, corner_radius=50).pack(side=TOP,padx=(10,10),pady=(20,10))
 
-label = CTkLabel(master=framemenu,text="047pegasus",font=("Montserrat", 20), fg_color='#3E3E3E',text_color='White').pack(side=TOP,padx=0,pady=(25,25))
+label = CTkLabel(master=framemenu,text="047pegasus",font=("Montserrat SemiBold", 20), fg_color='#3E3E3E',text_color='White').pack(side=TOP,padx=0,pady=(25,25))
 
 download_home=CTkImage(light_image=Image.open("home.png"),dark_image=Image.open("home.png"),size=(30,30))
 
-homelabel = CTkButton(master=framemenu,text="Home",font=("Montserrat" ,20), cursor='arrow', fg_color='#3E3E3E',hover_color='gray11',text_color='White',image=download_home).pack(side=TOP,padx=(0,20),pady=(110,10))
+homelabel = CTkButton(master=framemenu,text="Home",font=("Montserrat SemiBold" ,20), cursor='arrow', fg_color='#3E3E3E',hover_color='gray11',text_color='White',image=download_home).pack(side=TOP,padx=(0,20),pady=(110,10))
 
 download_stat=CTkImage(light_image=Image.open("statistics.png"),dark_image=Image.open("statistics.png"),size=(30,30))
 
-cpustatslabel = CTkButton(master=framemenu,text="Statistics",font=("Montserrat", 20), cursor='arrow',fg_color='#3E3E3E',hover_color='gray11',text_color='White',image=download_stat).pack(side=TOP,padx=0,pady=(20,10))
+cpustatslabel = CTkButton(master=framemenu,text="Statistics",font=("Montserrat SemiBold", 20), cursor='arrow',fg_color='#3E3E3E',hover_color='gray11',text_color='White',image=download_stat, command=stats).pack(side=TOP,padx=0,pady=(20,10))
 
 download_cont=CTkImage(light_image=Image.open("box.png"),dark_image=Image.open("box.png"),size=(25,25))
 
-contlabel = CTkButton(master=framemenu,text="Containers",font=("Montserrat", 20), cursor='arrow',fg_color='#3E3E3E',hover_color='gray11',text_color='White',image=download_cont).pack(side=TOP,padx=0,pady=(20,10))
+contlabel = CTkButton(master=framemenu,text="Containers",font=("Montserrat SemiBold", 20), cursor='arrow',fg_color='#3E3E3E',hover_color='gray11',text_color='White',image=download_cont, command=cont).pack(side=TOP,padx=0,pady=(20,10))
 
 run_img = CTkImage(light_image=Image.open("docker_greenjpg.jpg"),dark_image=Image.open("docker_greenjpg.jpg"),size=(200,50))
 running_label = CTkLabel(framemenu,text='', image= run_img,fg_color='green',corner_radius=0).pack(side=BOTTOM,padx=0,pady=(51,0))
@@ -84,7 +92,7 @@ can_def1.create_circle(200, 200, 100, fill='#CA00AA', outline="", width=4)
 can_def1.create_circle_arc(200, 200, 100, fill='#7C7C7C', outline="", start=45, end=140)
 can_def1.create_circle(200, 200, 70, fill='#383E54', outline="", width=4)
 #frame_Bottom_can1 = CTkFrame(master=can_def1, width=400, height=100, fg_color="gray10").pack(side=BOTTOM,fill=BOTH,expand=True,padx=0,pady=0)
-CTkLabel(can_def1,text="Container CPU Utilization",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(30,40),pady=(150,100))
+CTkLabel(can_def1,text="Container CPU Utilization",font=("Montserrat Medium", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(30,40),pady=(150,100))
 CTkLabel(can_def1,text="75%",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,padx=(30,30),pady=(185,0))
 can_def1.pack(side=LEFT,expand=True, padx=(20,15),pady=10)
 
@@ -93,7 +101,7 @@ can_def2 = CTkCanvas(frame_Top,bg = "#383E54",height = "530",width = 400,highlig
 can_def2.create_circle(200, 200, 100, fill='#00D27A', outline="", width=4)
 can_def2.create_circle_arc(200, 200, 100, fill='#7C7C7C', outline="", start=165, end=220)
 can_def2.create_circle(200, 200, 70, fill='#383E54', outline="", width=4)
-CTkLabel(can_def2,text="Container Memory Utilization \n (NVRAM)",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,fill=BOTH, expand=True,padx=(20,20),pady=(117,100))
+CTkLabel(can_def2,text="Container Memory Utilization",font=("Montserrat Medium", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,fill=BOTH, expand=True,padx=(20,20),pady=(135,115))
 CTkLabel(can_def2,text="65%",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,padx=(20,50),pady=(185,0))
 can_def2.pack(side=LEFT, expand=True, padx=(5,15),pady=10)
 
@@ -102,7 +110,7 @@ can_def3 = CTkCanvas(frame_Top,bg = "#383E54",height = "530",width = 400,highlig
 can_def3.create_circle(200, 200, 100, fill='#EDC700', outline="", width=4)
 can_def3.create_circle_arc(200, 200, 100, fill='#7C7C7C', outline="", start=165, end=300)
 can_def3.create_circle(200, 200, 70, fill='#383E54', outline="", width=4)
-CTkLabel(can_def3,text="Net CPU Utilization",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(80,80),pady=(150,100))
+CTkLabel(can_def3,text="Net CPU Utilization",font=("Montserrat Medium", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,fill=BOTH,expand=True,padx=(80,80),pady=(150,100))
 CTkLabel(can_def3,text="70%",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,padx=(30,30),pady=(185,0))
 can_def3.pack(side=LEFT,expand = True,padx=(5,20), pady=10)
 
@@ -123,7 +131,7 @@ table.heading('Name', text='Container Name')
 table.column("# 3", anchor='center')
 table.heading('Status', text='Container Status')
 
-for i in range(3):
+for i in range(11):   
     ID=('2023xa201a')
     Name=('Redis Enterprise')
     Status=('Running')
