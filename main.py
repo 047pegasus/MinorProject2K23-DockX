@@ -50,7 +50,7 @@ root.geometry("%d,%d" % (screen_width,screen_height))
 #sidePaneMenu
 framemenu = CTkFrame(master=root,height=screen_height,width=screen_width/4,fg_color="#3E3E3E")
 
-img = CTkImage(light_image=Image.open('round.png'),dark_image=Image.open('round.png'),size=(150,150))
+img = CTkImage(light_image=Image.open('047pegasus.jpg'),dark_image=Image.open('047pegasus.jpg'),size=(150,150))
 imglabel= CTkLabel(framemenu, text='', image = img, corner_radius=50).pack(side=TOP,padx=(10,10),pady=(20,10))
 
 label = CTkLabel(master=framemenu,text="047pegasus",font=("Montserrat", 20), fg_color='#3E3E3E',text_color='White').pack(side=TOP,padx=0,pady=(25,25))
@@ -78,7 +78,7 @@ frame_main = CTkFrame(master=root, width=1000, height=800, fg_color="Black")
 
 frame_Top = CTkFrame(master= frame_main, width=1000, height=500, fg_color="gray10")
 
-can_def1 = CTkCanvas(frame_Top, bg = "#383E54",height = "530",width = 400)
+can_def1 = CTkCanvas(frame_Top, bg = "#383E54",height = "530",width = 400,highlightthickness=0)
 
 can_def1.create_circle(200, 200, 100, fill='#CA00AA', outline="", width=4)
 can_def1.create_circle_arc(200, 200, 100, fill='#7C7C7C', outline="", start=45, end=140)
@@ -88,7 +88,7 @@ CTkLabel(can_def1,text="Container CPU Utilization",font=("Montserrat Bold", 25),
 CTkLabel(can_def1,text="75%",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,padx=(30,30),pady=(185,0))
 can_def1.pack(side=LEFT,expand=True, padx=(20,15),pady=10)
 
-can_def2 = CTkCanvas(frame_Top,bg = "#383E54",height = "530",width = 400)
+can_def2 = CTkCanvas(frame_Top,bg = "#383E54",height = "530",width = 400,highlightthickness=0)
 
 can_def2.create_circle(200, 200, 100, fill='#00D27A', outline="", width=4)
 can_def2.create_circle_arc(200, 200, 100, fill='#7C7C7C', outline="", start=165, end=220)
@@ -97,7 +97,7 @@ CTkLabel(can_def2,text="Container Memory Utilization \n (NVRAM)",font=("Montserr
 CTkLabel(can_def2,text="65%",font=("Montserrat Bold", 25), fg_color='#383E54',text_color='White').pack(side=BOTTOM,padx=(20,50),pady=(185,0))
 can_def2.pack(side=LEFT, expand=True, padx=(5,15),pady=10)
 
-can_def3 = CTkCanvas(frame_Top,bg = "#383E54",height = "530",width = 400)
+can_def3 = CTkCanvas(frame_Top,bg = "#383E54",height = "530",width = 400,highlightthickness=0)
 
 can_def3.create_circle(200, 200, 100, fill='#EDC700', outline="", width=4)
 can_def3.create_circle_arc(200, 200, 100, fill='#7C7C7C', outline="", start=165, end=300)
@@ -110,7 +110,7 @@ frame_Top.pack(side=TOP,fill=BOTH,expand=True,padx=0,pady=0)
 
 frame_Bottom = CTkFrame(master=frame_main, width=1000, height=400, fg_color="gray10")
 style = ttk.Style(root)
-style.theme_use("clam")
+style.theme_use("alt")
 style.configure("Treeview", background="black", fieldbackground="black", foreground="white", font=('Montserrat Medium', 14), rowheight=40)
 style.configure("Treeview.Heading", background="black", fieldbackground="black", foreground="#ACAAFF", font=('Montserrat SemiBold', 17))
 
