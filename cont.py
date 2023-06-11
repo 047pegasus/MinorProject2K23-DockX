@@ -73,46 +73,68 @@ framemenu.pack(side=LEFT, fill=BOTH, padx=0, pady=0)
 # mainWindowFrame
 frame_main = CTkFrame(master=root, width=1000, height=800, fg_color="Black")
 
-frame_Top = CTkFrame(master=frame_main, width=1000, height=600, fg_color="gray10")
+frame_Top = CTkFrame(master=frame_main, width=1000, height=700, fg_color="gray10")
 frame_Left = CTkFrame(master=frame_Top, width=1000, height=600, fg_color="gray10")
 frame_Right = CTkFrame(master=frame_Top, width=680, height=600, fg_color="#071330")
-can1=CTkCanvas(frame_Right, bg="#071330", height="600", width=680,highlightthickness=0.5)
+
+can1 = CTkCanvas(frame_Right, bg="#071330", height="600", width=680, highlightthickness=0)
+
+cloudimg = CTkImage(light_image=Image.open("cloud.png"), dark_image=Image.open("cloud.png"), size=(30, 30))
+instab = CTkLabel(can1, text="Network Inspector Tab", font=("Montserrat SemiBold", 20), fg_color="#071330", text_color='White')
+
+cloud_label = CTkLabel(can1, text='', image=cloudimg, fg_color='#071330', corner_radius=0)
+cloud_label.pack(side=LEFT, anchor=NW, padx=(120,0), pady=5)
+
+instab.pack(side=LEFT, anchor=NW, padx=(5,120), pady=5)
+
 can1.pack(side=TOP, fill=BOTH, expand=True, padx=0, pady=0)
 
 frame_LeftTop=CTkFrame(master=frame_Left, width=1000, height=50, fg_color="gray10")
 
-frame_LeftBottom=CTkFrame(master=frame_Left, width=1000, height=600, fg_color="#1560BD")
+frame_LeftBottom=CTkFrame(master=frame_Left, width=1000, height=500, fg_color="#1560BD")
+ethernet_img = CTkImage(light_image=Image.open("ethernet.png"), dark_image=Image.open("ethernet.png"), size=(30, 30))
+activity_label = CTkLabel(frame_LeftBottom, text="Port Exposure Activity Tab", font=("Montserrat SemiBold", 20), fg_color="#1560BD", text_color='White')
+
+ethernet_label = CTkLabel(frame_LeftBottom, text='', image=ethernet_img, fg_color='#1560BD', corner_radius=0)
+ethernet_label.pack(side=LEFT, anchor=NW, padx=10, pady=5)
+
+activity_label.pack(side=TOP, anchor=NW, padx=(0,0), pady=5)
+
 
 frame_cname=CTkFrame(master=frame_LeftTop, width=850, height=50, fg_color="#1560BD")
 cname=CTkCanvas(frame_cname, bg="#1560BD", height="50", width=850,highlightthickness=0)
-contname = CTkLabel(cname, text="Container name :", font=("Montserrat SemiBold", 20), fg_color="#1560BD", text_color='White').pack(side=TOP, padx=(10,800), pady=5)
+contname = CTkLabel(cname, text="Container name :", font=("Montserrat SemiBold", 20), fg_color="#1560BD", text_color='White').pack(side=LEFT, padx=(10,0), pady=5)
+refimg = CTkImage(light_image=Image.open("refresh.png"), dark_image=Image.open("refresh.png"),size=(30,30))
+ref_label = CTkLabel(cname, text='', image=refimg, fg_color='#1560BD', corner_radius=0).pack(side=RIGHT, padx=(800,0),  pady=(0,0))
 cname.pack(side=TOP, fill=BOTH, expand=True, padx=0, pady=0)
 
 frame_spin=CTkFrame(master=frame_LeftTop, width=200, height=50, fg_color="#1560BD")
 spin=CTkCanvas(frame_spin, bg="#1560BD", height="50", width=200,highlightthickness=0)
-sp = CTkButton(master=spin, text="Spin new", font=("Montserrat", 20), cursor='arrow', fg_color='#1560BD', hover_color='blue', text_color='White').pack(side=TOP, padx=0, pady=5)
+sp = CTkButton(master=spin, text="Spin new", font=("Montserrat", 20), cursor='arrow', fg_color='#1560BD', hover_color='#1560BD', text_color='White').pack(side=LEFT, padx=(10,0), pady=5)
+hardimg = CTkImage(light_image=Image.open("hard_drive.png"), dark_image=Image.open("hard_drive.png"),size=(30,30))
+hard_label = CTkLabel(spin, text='', image=hardimg, fg_color='#1560BD', corner_radius=0).pack(side=RIGHT, padx=(0,0),  pady=(0,0))
+
 spin.pack(side=TOP, fill=BOTH, expand=True, padx=0, pady=0)
-frame_cname.pack(side=LEFT, fill=BOTH, padx=0, pady=0)
-frame_spin.pack(side=RIGHT, fill=BOTH, padx=(10,0), pady=0)
+frame_cname.pack(side=LEFT, fill=BOTH, padx=0, pady=10)
+frame_spin.pack(side=RIGHT, fill=BOTH, padx=(10,0), pady=10)
 
-frame_LeftBottomIn=CTkFrame(master=frame_LeftBottom, width=1000, height=600, fg_color="#0A2351")
-ins=CTkCanvas(frame_LeftBottomIn, bg="#0A2351", height="600", width=1000,highlightthickness=0)
-ins.pack(side=TOP, fill=BOTH, expand=True, padx=0, pady=0)
 
-frame_LeftBottomIn.pack(side=TOP, fill=BOTH, padx=30, pady=(70,20))
+frame_LeftBottomIn=CTkFrame(master=frame_LeftBottom, width=1000, height=500, fg_color="#0A2351")
+ins=CTkCanvas(frame_LeftBottomIn, bg="#0A2351", height="500", width=1000,highlightthickness=0)
+ins.pack(side=BOTTOM, fill=BOTH, expand=True, padx=0, pady=0)
+
+frame_LeftBottomIn.pack(side=BOTTOM, fill=BOTH, padx=(0,50), pady=10)
 
 frame_LeftTop.pack(side=TOP, fill=BOTH, padx=0, pady=10)
-frame_LeftBottom.pack(side=BOTTOM, fill=BOTH, padx=0, pady=(0,10))
+frame_LeftBottom.pack(side=BOTTOM, fill=BOTH, padx=0, pady=(0,30))
 frame_Left.pack(side=LEFT, fill=BOTH, padx=(10,0), pady=0)
-frame_Right.pack(side=RIGHT, fill=BOTH, padx=(10,10), pady=(10,10))
+frame_Right.pack(side=RIGHT, fill=BOTH, padx=(10,10), pady=(20,30))
 
 frame_Top.pack(side=TOP, fill=BOTH, expand=True, padx=0, pady=(0,0))
 
-frame_Bottom = CTkFrame(master=frame_main, width=1000, height=500, fg_color="gray10")
-can2=CTkCanvas(frame_Bottom, bg="gray17", height="500", width=1000,highlightthickness=2)
-can2.pack(side=TOP, fill=BOTH, expand=True, padx=20, pady=(10,20))
-
-
+frame_Bottom = CTkFrame(master=frame_main, width=1000, height=1200, fg_color="gray10")
+can2=CTkCanvas(frame_Bottom, bg="gray17", height="300", width=1000,highlightthickness=2)
+can2.pack(side=TOP, fill=BOTH, expand=True, padx=20, pady=(0,10))
 
 frame_Bottombar = CTkFrame(master=frame_main, width=1000, height=70, fg_color="gray19", corner_radius=0) 
 CPUlabel = CTkLabel(master=frame_Bottombar,text="CPU: 65.01%",font=("Montserrat" ,15), fg_color='gray19',text_color='White').pack(side=LEFT,padx=40,pady=12)
